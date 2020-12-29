@@ -11,11 +11,9 @@ let currentDate = moment()
 // let targetDate = moment("20210101T000000")
 let targetDate = moment("20210101T000000")
 let days,hour,mins,seconds;
-let totalPercent
-
+let totalPercent 
 setInterval(()=>{
     days = currentDate.to(targetDate)
-    console.log(days);
     if(days.indexOf("ago") != -1){
         msg.innerHTML = "Timer Ended, " + days
         days = 00;
@@ -31,19 +29,17 @@ setInterval(()=>{
         }else{
             days = currentDate.to(targetDate).match(/\d/g).join("")
         }
-        hour = 24 - moment().format("HH")
+        hour = 12 - moment().format("hh")
         mins = 60 - moment().format('mm')
         seconds = 60 - moment().format('ss')
     }
-    
 
-    
-    // totalPercent = ((days*24 + hour)*60 + mins)*60 + seconds
-    // boxFill.style.top = Math.floor(totalPercent/innerHeight) + "px";
-    // console.log(window.innerHeight);
     dayField.innerHTML = days
     hourField.innerHTML = hour
     minField.innerHTML = mins
     secField.innerHTML = seconds
 
 },1000)
+
+
+// (maxSeconds / secondsPassed)*innerHeight
